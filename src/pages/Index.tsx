@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hero } from "@/components/Hero";
 import { ThemeSelector, type Theme } from "@/components/ThemeSelector";
 import { InputPanel } from "@/components/InputPanel";
 import { StoryPanel } from "@/components/StoryPanel";
@@ -174,14 +175,19 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      {/* Hero Section */}
+      <Hero />
+
+      <main className="container mx-auto px-4 max-w-4xl">
         <div className="space-y-8">
           {/* Theme Selection */}
           {!selectedTheme ? (
-            <ThemeSelector
-              selectedTheme={selectedTheme}
-              onThemeSelect={handleThemeSelect}
-            />
+            <div className="mt-10 md:mt-16">
+              <ThemeSelector
+                selectedTheme={selectedTheme}
+                onThemeSelect={handleThemeSelect}
+              />
+            </div>
           ) : (
             <div className="space-y-6">
               {/* Input Panel */}
