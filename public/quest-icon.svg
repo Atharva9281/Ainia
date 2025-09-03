@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#4f46e5"/>
+  
+  <!-- Rocket body -->
+  <path d="M16 6 L20 14 L16 22 L12 14 Z" fill="#ffffff"/>
+  
+  <!-- Rocket fins -->
+  <path d="M12 14 L10 16 L12 18 Z" fill="#e0e7ff"/>
+  <path d="M20 14 L22 16 L20 18 Z" fill="#e0e7ff"/>
+  
+  <!-- Rocket window -->
+  <circle cx="16" cy="12" r="2" fill="#4f46e5"/>
+  
+  <!-- Stars -->
+  <circle cx="8" cy="8" r="1" fill="#fbbf24"/>
+  <circle cx="24" cy="10" r="1" fill="#fbbf24"/>
+  <circle cx="6" cy="24" r="1" fill="#fbbf24"/>
+  <circle cx="26" cy="26" r="1" fill="#fbbf24"/>
+</svg>
