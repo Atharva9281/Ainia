@@ -168,16 +168,6 @@ Currently uses manual testing. Recommended additions:
 - Test with real children when possible
 - Maintain educational quality while keeping content fun
 
-## 📄 License
-
-[Add your license here]
-
-## 🙋‍♀️ Support
-
-For questions, issues, or feature requests:
-- Create an issue in this repository
-- Contact: [your-email@domain.com]
-
 ---
 
 **Built with ❤️ for curious young minds**
