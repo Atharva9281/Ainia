@@ -1,73 +1,183 @@
-# Welcome to your Lovable project
+# Quest Cards - Interactive Learning Adventures for Kids
 
-## Project info
+A fun, educational web application that creates personalized learning adventures for children ages 5-10 using AI-powered storytelling.
 
-**URL**: https://lovable.dev/projects/e09d22f4-bab6-42df-9d28-98ccab1b19c7
+## 🌟 Features
 
-## How can I edit this code?
+### For Children
+- **Interactive Learning Stories** - 3-step educational adventures with age-appropriate content
+- **Voice Narration** - Text-to-speech with pause/stop controls for accessibility
+- **Two Themed Environments** - Space 🚀 and Forest 🌲 adventures
+- **Progress Tracking** - Visual indicators and learning journey history
+- **Educational Checkpoints** - Fun quizzes to validate understanding
 
-There are several ways of editing your application.
+### For Parents
+- **Age-Appropriate Content** - Strict vocabulary filtering for 5-10 year olds
+- **Parent Digest** - Summary of skills learned and suggested home activities
+- **Usage Statistics** - Track learning progress and daily activity
+- **Safe Learning Environment** - Multiple content validation layers
 
-**Use Lovable**
+### For Educators
+- **Curriculum Alignment** - Stories build understanding progressively
+- **Session Management** - Save and resume learning sessions
+- **Learning Analytics** - Track engagement and completion rates
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e09d22f4-bab6-42df-9d28-98ccab1b19c7) and start prompting.
+## 🚀 Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Google AI API key (Gemini 2.0 Flash)
+- Supabase account for data storage
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd child-story
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Set up environment variables
+cp .env.example .env.local
 ```
 
-**Edit a file directly in GitHub**
+### Environment Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env.local` file with:
 
-**Use GitHub Codespaces**
+```env
+VITE_GOOGLE_API_KEY=your_gemini_api_key_here
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Development
 
-## What technologies are used for this project?
+```bash
+# Start development server
+npm run dev
 
-This project is built with:
+# Build for production
+npm run build
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Preview production build
+npm run preview
+```
 
-## How can I deploy this project?
+## 🛠️ Tech Stack
 
-Simply open [Lovable](https://lovable.dev/projects/e09d22f4-bab6-42df-9d28-98ccab1b19c7) and click on Share -> Publish.
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **AI Integration**: Google Gemini 2.0 Flash API
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **Voice**: Web Speech API
+- **Validation**: Zod schema validation
 
-## Can I connect a custom domain to my Lovable project?
+## 📚 How It Works
 
-Yes, you can!
+### Learning Flow
+1. **Topic Selection** - Child asks a question about anything they're curious about
+2. **Story Generation** - AI creates a 3-step learning adventure using age-appropriate language
+3. **Interactive Experience** - Voice narration with navigation controls
+4. **Knowledge Check** - Educational checkpoint quiz
+5. **Parent Summary** - Skills learned and suggested activities
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Content Safety
+- **Vocabulary Filtering** - Automatic detection and blocking of advanced scientific terms
+- **Age Validation** - Content specifically tailored for 5-10 year old comprehension
+- **Educational Quality** - Multiple validation layers ensure meaningful learning content
+- **Retry Logic** - Automatic content regeneration if validation fails
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🎯 Target Audience
+
+**Primary Users**: Children ages 5-10
+**Secondary Users**: Parents and educators seeking quality educational content
+
+### Age-Specific Features
+- **Ages 5-7**: Simple comparisons, basic vocabulary, visual learning
+- **Ages 8-10**: Expanded vocabulary, cause-effect reasoning, observation skills
+
+## 🔧 Architecture
+
+### Key Components
+- **Quest Interface** - Main learning environment with theme selection
+- **Story Panel** - Content display with voice controls and navigation
+- **Checkpoint Flow** - Interactive quiz system
+- **Session Management** - Progress tracking and conversation history
+- **Content Validation** - Multi-layer safety and quality checks
+
+### API Integration
+- **Gemini 2.0 Flash** - Story generation with custom prompts
+- **Supabase** - User sessions, caching, and usage tracking
+- **Web Speech API** - Text-to-speech functionality
+
+## 📊 Content Guidelines
+
+### Vocabulary Standards
+- **Approved Words**: Everyday objects, emotions, actions kids know
+- **Banned Terms**: Scientific jargon, complex concepts, inappropriate content
+- **Quality Metrics**: Logical progression, age-appropriate analogies, clear explanations
+
+### Story Structure
+1. **Discovery** - "Wow! Did you know [topic] is like [familiar thing]?"
+2. **Explanation** - "The cool thing is [how it works] because [simple reason]!"
+3. **Application** - "Now you can [spot/use this knowledge] when [real situation]!"
+
+## 🚦 Usage Limits
+
+- **Daily Limit**: 20 stories per user per day
+- **Caching**: 30-day story cache to improve performance
+- **Rate Limiting**: Prevents API overuse and ensures fair access
+
+## 🔒 Security & Privacy
+
+- **Content Filtering** - Multiple validation layers for child safety
+- **No Personal Data Collection** - Only essential usage analytics
+- **Secure Authentication** - Supabase Auth with proper session management
+- **API Key Protection** - Environment variables for sensitive data
+
+## 🧪 Testing
+
+Currently uses manual testing. Recommended additions:
+- Unit tests for content validation
+- Integration tests for API calls
+- End-to-end tests for user flows
+
+## 📈 Performance
+
+- **Bundle Size**: ~609KB (consider code splitting for production)
+- **Response Time**: ~2-3 seconds for story generation
+- **Caching**: Reduces API calls for repeated topics
+- **Optimization**: Lazy loading and image compression
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow existing code style and TypeScript conventions
+- Ensure all content meets age-appropriateness standards
+- Test with real children when possible
+- Maintain educational quality while keeping content fun
+
+## 📄 License
+
+[Add your license here]
+
+## 🙋‍♀️ Support
+
+For questions, issues, or feature requests:
+- Create an issue in this repository
+- Contact: [your-email@domain.com]
+
+---
+
+**Built with ❤️ for curious young minds**

@@ -1,18 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import spaceImage from "@/assets/space-theme.jpg";
 import forestImage from "@/assets/forest-theme.jpg";
 
 export type Theme = "space" | "forest";
 
 interface ThemeSelectorProps {
-  selectedTheme: Theme | null;
-  onThemeSelect: (theme: Theme) => void;
+  selectedTheme?: Theme | null;
 }
 
-export function ThemeSelector({ selectedTheme, onThemeSelect }: ThemeSelectorProps) {
+export function ThemeSelector({ selectedTheme }: ThemeSelectorProps) {
+  const navigate = useNavigate();
+
+  const handleThemeSelect = (theme: Theme) => {
+    navigate(`/quest/${theme}`);
+  };
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6 text-foreground">
         Choose Your Adventure!
       </h2>
@@ -21,9 +26,9 @@ export function ThemeSelector({ selectedTheme, onThemeSelect }: ThemeSelectorPro
           className={`relative overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
             selectedTheme === "space" ? "ring-4 ring-space-primary shadow-glow" : "shadow-soft"
           }`}
-          onClick={() => onThemeSelect("space")}
+          onClick={() => handleThemeSelect("space")}
         >
-          <div className="relative h-48">
+          <div className="relative h-64">
             <img 
               src={spaceImage} 
               alt="Space adventure with rockets and planets"
@@ -50,9 +55,9 @@ export function ThemeSelector({ selectedTheme, onThemeSelect }: ThemeSelectorPro
           className={`relative overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 ${
             selectedTheme === "forest" ? "ring-4 ring-forest-primary shadow-glow" : "shadow-soft"
           }`}
-          onClick={() => onThemeSelect("forest")}
+          onClick={() => handleThemeSelect("forest")}
         >
-          <div className="relative h-48">
+          <div className="relative h-64">
             <img 
               src={forestImage} 
               alt="Forest adventure with trees and animals"

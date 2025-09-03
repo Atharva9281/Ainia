@@ -29,10 +29,58 @@ export function CheckpointFlow({ theme, checkpoint, onComplete }: CheckpointFlow
 
     setSubmitted(true);
     
-    // Simple answer validation - could be enhanced with fuzzy matching
+    // Enhanced answer validation with fuzzy matching and multiple correct answers
     const userAnswer = answer.toLowerCase().trim();
     const expectedAnswer = checkpoint.expected.toLowerCase().trim();
-    const correct = userAnswer === expectedAnswer || userAnswer.includes(expectedAnswer);
+    
+    // Check for exact match first
+    let correct = userAnswer === expectedAnswer;
+    
+    // Check for partial matches (contains expected answer)
+    if (!correct) {
+      correct = userAnswer.includes(expectedAnswer) || expectedAnswer.includes(userAnswer);
+    }
+    
+    // Handle numbers for count questions
+    if (!correct && checkpoint.type === 'count') {
+      const userNumber = parseInt(userAnswer);
+      const expectedNumber = parseInt(expectedAnswer);
+      correct = !isNaN(userNumber) && !isNaN(expectedNumber) && userNumber === expectedNumber;
+    }
+    
+    // Handle common synonyms and variations for compare questions
+    if (!correct && checkpoint.type === 'compare') {
+      const synonyms: Record<string, string[]> = {
+        'big': ['large', 'huge', 'giant', 'enormous', 'massive'],
+        'small': ['tiny', 'little', 'mini', 'miniature'],
+        'fast': ['quick', 'speedy', 'rapid', 'swift'],
+        'slow': ['sluggish', 'gradual', 'leisurely'],
+        'hot': ['warm', 'heated', 'burning'],
+        'cold': ['cool', 'freezing', 'chilly', 'icy'],
+        'bright': ['shiny', 'brilliant', 'glowing', 'luminous'],
+        'dark': ['dim', 'shadowy', 'gloomy']
+      };
+      
+      for (const [key, values] of Object.entries(synonyms)) {
+        if (expectedAnswer.includes(key) && values.some(synonym => userAnswer.includes(synonym))) {
+          correct = true;
+          break;
+        }
+        if (values.includes(expectedAnswer) && userAnswer.includes(key)) {
+          correct = true;
+          break;
+        }
+      }
+    }
+    
+    // Remove common articles and prepositions for better matching
+    if (!correct) {
+      const cleanUserAnswer = userAnswer.replace(/\b(the|a|an|is|are|was|were|in|on|at|by|for|with|to)\b/g, '').trim();
+      const cleanExpectedAnswer = expectedAnswer.replace(/\b(the|a|an|is|are|was|were|in|on|at|by|for|with|to)\b/g, '').trim();
+      correct = cleanUserAnswer === cleanExpectedAnswer || 
+                cleanUserAnswer.includes(cleanExpectedAnswer) || 
+                cleanExpectedAnswer.includes(cleanUserAnswer);
+    }
     
     setIsCorrect(correct);
     
