@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from './ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Separator } from './ui/separator'
-import { Sparkles, X } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { signInWithGoogle } from '../lib/auth'
 
 interface LoginModalProps {
@@ -30,15 +30,6 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-gradient-to-br from-background via-accent/20 to-background border-2 border-primary/20 shadow-glow">
-        {/* Close button */}
-        <Button
-          onClick={onClose}
-          variant="ghost"
-          size="sm"
-          className="absolute right-4 top-4 p-0 w-8 h-8 rounded-full"
-        >
-          <X className="w-4 h-4" />
-        </Button>
 
         <DialogHeader className="text-center space-y-4 pb-2">
           <div className="mx-auto w-16 h-16 bg-gradient-magic rounded-full flex items-center justify-center shadow-soft">
